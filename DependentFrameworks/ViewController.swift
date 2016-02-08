@@ -7,9 +7,17 @@
 //
 
 import UIKit
+import Framework
 
 class ViewController: UIViewController {
 
+    @IBOutlet
+    weak var appResponseLabel:UILabel!
+    
+    @IBOutlet
+    weak var framewokrResponseLabel:UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -19,7 +27,21 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    @IBAction
+    func appTapped(sender:AnyObject?) {
+        let app = AppClass()
+        app.appFunction { (str) -> () in
+            self.appResponseLabel.text = str
+        }
+    }
+    
+    @IBAction
+    func frameworkTapped(sender:AnyObject?) {
+        let framework = FrameworkClass()
+        framework.frameworkFunction { (str) -> () in
+            self.framewokrResponseLabel.text = str
+        }
+    }
 }
 
